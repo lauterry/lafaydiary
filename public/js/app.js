@@ -1,14 +1,14 @@
 var lafayApp = angular.module('lafayApp', [], function ($routeProvider) {
     $routeProvider.when('/welcome', {
-        templateUrl: 'views/Welcome.html'
+        templateUrl: 'partials/Welcome.html'
     });
     $routeProvider.when('/saveActivity', {
-        templateUrl: 'views/SaveActivity.html',
+        templateUrl: 'partials/SaveActivity.html',
         controller: 'ActivityController'
     });
 
     $routeProvider.when('/404', {
-        templateUrl: 'views/404.html'
+        templateUrl: 'partials/404.html'
     });
     $routeProvider.otherwise({redirectTo: '/404'});
 });
