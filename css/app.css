@@ -1,0 +1,35 @@
+body {
+    padding-top:60px;
+}
+
+@media (max-width: 979px){
+    body {
+        padding-top:0px;
+    }
+}
+
+a:hover{
+    cursor: pointer
+}
+
+section.row {
+    margin-top: 25px;
+    margin-bottom: 10px;;
+}
+
+
+table input[type='number'] {
+    width: 30px;
+    margin-bottom: 0px;
+}
+
+#level-select .dropdown-menu {
+    width: 100%;
+    text-align: center;
+}
+
+/* hide spinner for inpu type number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
