@@ -1,10 +1,16 @@
-var lafayApp = angular.module('lafayApp', [], function ($routeProvider) {
+var lafayApp = angular.module('lafayApp', ["ui"], function ($routeProvider) {
     $routeProvider.when('/welcome', {
         templateUrl: 'partials/Welcome.html'
     });
+
+    $routeProvider.when('/activities', {
+        templateUrl: 'partials/ViewActivities',
+        controller: 'ViewActivitiesController'
+    });
+
     $routeProvider.when('/saveActivity', {
         templateUrl: 'partials/SaveActivity.html',
-        controller: 'ActivityController'
+        controller: 'SaveActivityController'
     });
 
     $routeProvider.when('/404', {

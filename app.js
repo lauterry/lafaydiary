@@ -39,6 +39,11 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
+app.get('/lafaydiary/api/activities', api.activities);
+app.get('/lafaydiary/lafay/api/activity/:id', api.activity);
+app.post('/lafaydiary/api/activity', api.addActivity);
+app.put('/lafaydiary/api/activity/:id', api.editActivity);
+app.delete('/lafaydiary/api/activity/:id', api.deleteActivity);
 
 
 // Start server

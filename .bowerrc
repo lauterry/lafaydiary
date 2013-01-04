@@ -1,4 +1,4 @@
 {
-  "directory" : "js/lib",
+  "directory" : "public/js/lib",
   "json"      : "component.json"
 }
