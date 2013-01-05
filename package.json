@@ -3,11 +3,11 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
+        "node": "0.8.15",
         "express": "3.x",
         "mongoose": "*",
         "path": "*",
         "ejs": "*",
-        "lodash": "*",
-        "supervisor": "*"
+        "lodash": "*"
     }
 }

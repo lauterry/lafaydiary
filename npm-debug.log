@@ -1,0 +1,74 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.1.66
+3 info using node@v0.8.15
+4 verbose read json /Users/thierlau/work/workspace/lafaydiary/package.json
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/Users/thierlau/work/workspace/lafaydiary',
+6 verbose install   [ 'node', 'express', 'mongoose', 'path', 'ejs', 'lodash' ] ]
+7 verbose from cache /Users/thierlau/work/workspace/lafaydiary/package.json
+8 info preinstall Lafay-Diary@0.0.1
+9 verbose read json /Users/thierlau/work/workspace/lafaydiary/node_modules/ejs/package.json
+10 verbose read json /Users/thierlau/work/workspace/lafaydiary/node_modules/express/package.json
+11 verbose read json /Users/thierlau/work/workspace/lafaydiary/node_modules/lodash/package.json
+12 verbose read json /Users/thierlau/work/workspace/lafaydiary/node_modules/mongoose/package.json
+13 verbose read json /Users/thierlau/work/workspace/lafaydiary/node_modules/path/package.json
+14 verbose from cache /Users/thierlau/work/workspace/lafaydiary/package.json
+15 verbose readDependencies using package.json deps
+16 verbose read json /Users/thierlau/work/workspace/lafaydiary/node_modules/.bin/package.json
+17 verbose from cache /Users/thierlau/work/workspace/lafaydiary/node_modules/ejs/package.json
+18 verbose from cache /Users/thierlau/work/workspace/lafaydiary/node_modules/express/package.json
+19 verbose from cache /Users/thierlau/work/workspace/lafaydiary/node_modules/lodash/package.json
+20 verbose from cache /Users/thierlau/work/workspace/lafaydiary/node_modules/mongoose/package.json
+21 verbose from cache /Users/thierlau/work/workspace/lafaydiary/node_modules/path/package.json
+22 verbose already installed skipping ejs@* /Users/thierlau/work/workspace/lafaydiary
+23 verbose already installed skipping lodash@* /Users/thierlau/work/workspace/lafaydiary
+24 verbose cache add [ 'node@0.8.15', null ]
+25 silly cache add name=undefined spec="node@0.8.15" args=["node@0.8.15",null]
+26 verbose parsed url { pathname: 'node@0.8.15',
+26 verbose parsed url   path: 'node@0.8.15',
+26 verbose parsed url   href: 'node@0.8.15' }
+27 silly cache add name="node" spec="0.8.15" args=["node","0.8.15"]
+28 verbose parsed url { pathname: '0.8.15', path: '0.8.15', href: '0.8.15' }
+29 verbose addNamed [ 'node', '0.8.15' ]
+30 verbose addNamed [ '0.8.15', '0.8.15' ]
+31 verbose already installed skipping express@3.x /Users/thierlau/work/workspace/lafaydiary
+32 silly lockFile 66e28830-node-0-8-15 node@0.8.15
+33 verbose lock node@0.8.15 /Users/thierlau/.npm/66e28830-node-0-8-15.lock
+34 verbose already installed skipping mongoose@* /Users/thierlau/work/workspace/lafaydiary
+35 verbose url raw node/0.8.15
+36 verbose url resolving [ 'https://registry.npmjs.org/', './node/0.8.15' ]
+37 verbose url resolved https://registry.npmjs.org/node/0.8.15
+38 info trying registry request attempt 1 at 16:02:02
+39 http GET https://registry.npmjs.org/node/0.8.15
+40 verbose already installed skipping path@* /Users/thierlau/work/workspace/lafaydiary
+41 http 404 https://registry.npmjs.org/node/0.8.15
+42 silly registry.get cb [ 404,
+42 silly registry.get   { vary: 'Accept',
+42 silly registry.get     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+42 silly registry.get     etag: '"5KCWC3Z2V740HLJLIQT3SOD3G"',
+42 silly registry.get     date: 'Sat, 05 Jan 2013 15:00:46 GMT',
+42 silly registry.get     'content-type': 'application/json',
+42 silly registry.get     'content-length': '37' } ]
+43 silly lockFile 66e28830-node-0-8-15 node@0.8.15
+44 error Error: version not found: 0.8.15 : node/0.8.15
+44 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:259:14)
+44 error     at Request.init.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/main.js:120:22)
+44 error     at Request.EventEmitter.emit (events.js:99:17)
+44 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/main.js:648:16)
+44 error     at Request.EventEmitter.emit (events.js:126:20)
+44 error     at IncomingMessage.Request.start.self.req.self.httpModule.request.buffer (/usr/local/lib/node_modules/npm/node_modules/request/main.js:610:14)
+44 error     at IncomingMessage.EventEmitter.emit (events.js:126:20)
+44 error     at IncomingMessage._emitEnd (http.js:366:10)
+44 error     at HTTPParser.parserOnMessageComplete [as onMessageComplete] (http.js:149:23)
+44 error     at CleartextStream.socketOnData (http.js:1367:20)
+45 error If you need help, you may report this log at:
+45 error     <http://github.com/isaacs/npm/issues>
+45 error or email it to:
+45 error     <npm-@googlegroups.com>
+46 error System Darwin 11.4.2
+47 error command "node" "/usr/local/bin/npm" "install"
+48 error cwd /Users/thierlau/work/workspace/lafaydiary
+49 error node -v v0.8.15
+50 error npm -v 1.1.66
+51 verbose exit [ 1, true ]
