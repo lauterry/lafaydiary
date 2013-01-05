@@ -1,5 +1,5 @@
 body {
-    padding-top:60px;
+    padding-top:25px;
 }
 
 @media (max-width: 979px){
@@ -12,11 +12,9 @@ a:hover{
     cursor: pointer
 }
 
-section.row {
+section {
     margin-top: 25px;
-    margin-bottom: 10px;;
 }
-
 
 table input[type='number'] {
     width: 30px;
@@ -32,4 +30,9 @@ table input[type='number'] {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+caption {
+    text-align: left;
+    margin-bottom: 5px;
 }

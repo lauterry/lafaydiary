@@ -4,7 +4,10 @@
 
 <section>
     <table class="table table-striped table-condensed table-bordered" ng-repeat="activity in activities">
-        <caption>{{activity.date | date:'dd/MM/yyyy'}}</caption>
+        <caption>
+            <span class="label label-info">{{activity.date | date:'dd/MM/yyyy'}}</span>
+            <span class="label label-important" ng-click="deleteActivity(activity)"><i class="icon-trash icon-white"></i></span>
+        </caption>
         <thead>
         <tr>
             <th>Série</th>

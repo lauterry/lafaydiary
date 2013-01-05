@@ -78,10 +78,17 @@ exports.editActivity = function (req, res) {
 exports.deleteActivity = function (req, res) {
     var id = req.params.id;
 
-    if (id >= 0 && id < data.length) {
-        data.splice(id, 1);
-        res.json(true);
-    } else {
-        res.json(false);
-    }
+    Activity.findById(id, function(err, activity){
+        if (err) {
+            res.json(500, err);
+        } else {
+            activity.remove(function(err, act){
+                if (err) {
+                    res.json(500, err);
+                } else {
+                    res.json(202)
+                }
+            });
+        }
+    });
 };
