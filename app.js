@@ -48,6 +48,6 @@ app.delete('/lafaydiary/api/activity/:id', api.deleteActivity);
 
 // Start server
 
-app.listen(3000, function(){
-    console.log("Express server listening on port %d in %s mode", 3000, app.settings.env);
+app.listen(37094, function(){
+    console.log("Express server listening on port %d in %s mode", 37094, app.settings.env);
 });
