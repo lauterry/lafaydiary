@@ -15,11 +15,13 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
 
         $http.delete('/lafaydiary/api/activity/' + activityId).
             success(function(data, status, headers, config) {
-                var deletedActivity = _.find($scope.activities, function(activity){
-                    return activity.id === activityId;
-                });
-
-                $scope.activities.splice($scope.activities.indexOf(deletedActivity));
+                $http.get('/lafaydiary/api/activities').
+                    success(function(data, status, headers, config) {
+                        $scope.activities = data.activities;
+                    }).
+                    error(function(data, status, headers, config){
+                        alert('Error : ' + status);
+                    });
             }).
             error(function(data, status, headers, config){
                 alert('Error : ' + status);
