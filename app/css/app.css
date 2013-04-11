@@ -1,0 +1,43 @@
+body {
+    padding-top:25px;
+}
+
+@media (max-width: 979px){
+    body {
+        padding-top:0px;
+    }
+}
+
+a:hover{
+    cursor: pointer
+}
+
+section {
+    margin-top: 25px;
+}
+
+table input[type='number'] {
+    width: 30px;
+    margin-bottom: 0px;
+}
+
+#level-select .dropdown-menu {
+    width: 100%;
+    text-align: center;
+}
+
+/* hide spinner for inpu type number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+caption {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+small > .datepicker {
+    display : inline-table;
+    margin-top: 2px;
+}
