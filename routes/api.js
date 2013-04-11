@@ -32,15 +32,25 @@ exports.activities = function (req, res) {
     });
 };
 
-// GET one activity
 exports.activity = function (req, res) {
     var id = req.params.id;
+    if (id >= 0 && id < data.length) {
+        res.json({
+            post: data[id]
+        });
+    } else {
+        res.json(false);
+    }
 };
 
 // POST
+
 exports.addActivity = function (req, res) {
+
     var activity = new Activity();
+
     _.assign(activity, req.body);
+
     activity.save(function (err, activity) {
         if (err) {
           res.json(500, err);
@@ -53,9 +63,17 @@ exports.addActivity = function (req, res) {
 // PUT
 exports.editActivity = function (req, res) {
     var id = req.params.id;
+
+    if (id >= 0 && id < data.length) {
+        data[id] = req.body;
+        res.json(true);
+    } else {
+        res.json(false);
+    }
 };
 
 // DELETE
+
 exports.deleteActivity = function (req, res) {
     var id = req.params.id;
 
