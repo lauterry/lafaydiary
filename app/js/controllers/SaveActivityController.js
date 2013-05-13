@@ -1,10 +1,15 @@
-lafayApp.controller('SaveActivityController', function SaveActivityController($scope, $http, LafayService) {
+lafayApp.controller('SaveActivityController', function SaveActivityController($scope, Activity, LafayService) {
     'use strict';
 
     $scope.levels = LafayService.fetchAllLevels();
 
+    // If no level is selected, display a default label
     $scope.levelLabel = "Veuillez sélectionner votre niveau";
 
+    /**
+     * Update the level and the level label given a level number
+     * @param levelNumber  number of the level selected
+     */
     $scope.loadLevel = function(levelNumber){
         var level = _.find($scope.levels, function(level) {
             return level.number === levelNumber;
@@ -15,11 +20,19 @@ lafayApp.controller('SaveActivityController', function SaveActivityController($s
 
     $scope.saveActivity = function(){
         var activityToSave = {};
+        var series = [];
+        _.forEach($scope.level.exercices, function(exercice){
+            series = [];
+            _.forEach(exercice.series, function(serie){
+                series.push(serie.rep);
+            });
+            exercice.series = series;
+        });
         activityToSave.exercices = $scope.level.exercices;
         activityToSave.date = $scope.date;
         activityToSave.level = $scope.level.number;
 
-        $http.post('/lafaydiary/api/activity', activityToSave).
+        Activity.create(activityToSave).
             success(function(data, status, headers, config) {
                 alert('Success : ' + data);
             }).
@@ -41,7 +54,7 @@ lafayApp.controller('ExerciceController', function ExerciceController($scope) {
         });
 
         var total = 0;
-        angular.forEach(exercice.reps, function(repetition, repKey){
+        angular.forEach(exercice.series, function(repetition, repKey){
             total += repetition.rep;
             $scope.$apply(function(){
                 exercice.total = total;

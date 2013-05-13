@@ -1,9 +1,23 @@
-lafayApp.controller('ViewActivitiesController', function ViewActivitiesController($scope, $http) {
+lafayApp.controller('ViewActivitiesController', function ViewActivitiesController($scope, Activity) {
     'use strict';
 
-    $http.get('/lafaydiary/api/activities').
+    Activity.fetch().
         success(function(data, status, headers, config) {
             $scope.activities = data.activities;
+
+            var tempSerie = {};
+            _.forEach($scope.activities, function(activity){
+                _.forEach(activity.exercices, function(exercice){
+                    var series = [];
+                    _.forEach(exercice.series, function(serie){
+                        tempSerie.rep = serie;
+                        series.push(tempSerie);
+                    });
+                    exercice.series = series;
+                });
+            });
+
+
         }).
         error(function(data, status, headers, config){
             alert('Error : ' + status);
@@ -13,7 +27,7 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
 
         var activityId = activity._id;
 
-        $http.delete('/lafaydiary/api/activity/' + activityId).
+        Activity.remove(activityId).
             success(function(data, status, headers, config) {
                 $http.get('/lafaydiary/api/activities').
                     success(function(data, status, headers, config) {

@@ -23,7 +23,7 @@
         <tbody>
         <tr ng-repeat="exercice in activity.exercices">
             <td>{{exercice.name}}</td>
-            <td ng-repeat="repetition in exercice.reps">{{repetition.rep}}</td>
+            <td ng-repeat="repetition in exercice.series">{{repetition.rep}}</td>
             <td>{{exercice.total}}</td>
         </tr>
         </tbody>

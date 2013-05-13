@@ -3,21 +3,30 @@
 var _ = require('lodash');
 
 var mongoose = require('mongoose');
-var schema, Activity;
+
+var schema, Activity, db;
+
 mongoose.connect("mongodb://lafay:lafay@ds047057.mongolab.com:47057/lafaydb");
-var db = mongoose.connection;
+
+db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-    console.log("DB Connected");
-    schema = mongoose.Schema({
-        date: { type: Date },
-        level: Number,
-        exercices: [{
-            name: String,
-            total: Number,
-            reps: [{rep : Number}]
-        }]
+
+db.once('open', function callback() {
+    console.log("** DB Connected");
+
+    var schema = mongoose.Schema({
+        date: {type: Date},
+        level: {type: Number},
+        exercices: [
+            {
+                name: String,
+                total: { type: Number},
+                series: [Number]
+            }
+        ]
     });
+
     Activity = db.model('Activity', schema);
 });
 
@@ -34,28 +43,30 @@ exports.activities = function (req, res) {
 
 exports.activity = function (req, res) {
     var id = req.params.id;
-    if (id >= 0 && id < data.length) {
-        res.json({
-            post: data[id]
-        });
-    } else {
-        res.json(false);
-    }
+
+
+    Activity.findById(id, function (err, activity) {
+        if (err) {
+            res.json(500, err);
+        } else {
+            res.json(200, {activity: activity});
+        }
+    });
 };
 
 // POST
-
 exports.addActivity = function (req, res) {
 
-    var activity = new Activity();
+    console.log('** POST ACTIVITY : ' + JSON.stringify(req.body));
 
-    _.assign(activity, req.body);
+    var activity = new Activity(req.body);
 
     activity.save(function (err, activity) {
         if (err) {
-          res.json(500, err);
+            console.log(err);
+            res.json(500, err);
         } else {
-          res.json(200, activity);
+            res.json(201, activity);
         }
     });
 };
@@ -64,24 +75,24 @@ exports.addActivity = function (req, res) {
 exports.editActivity = function (req, res) {
     var id = req.params.id;
 
-    if (id >= 0 && id < data.length) {
-        data[id] = req.body;
-        res.json(true);
-    } else {
-        res.json(false);
-    }
+    Activity.update({id: id}, req.body, {}, function (err, activity) {
+        if (err) {
+            res.json(304, err);
+        } else {
+            res.json(200, activity);
+        }
+    });
 };
 
 // DELETE
-
 exports.deleteActivity = function (req, res) {
     var id = req.params.id;
 
-    Activity.findById(id, function(err, activity){
+    Activity.findById(id, function (err, activity) {
         if (err) {
             res.json(500, err);
         } else {
-            activity.remove(function(err, act){
+            activity.remove(function (err, act) {
                 if (err) {
                     res.json(500, err);
                 } else {
@@ -90,9 +101,4 @@ exports.deleteActivity = function (req, res) {
             });
         }
     });
-};
-
-
-exports.getReports = function(req, res) {
-
 };

@@ -1,4 +1,4 @@
 {
   "directory" : "public/js/lib",
-  "json"      : "component.json"
+  "json"      : "bower.json"
 }

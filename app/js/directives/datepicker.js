@@ -8,14 +8,14 @@ lafayApp.directive('datePicker', function () {
         link : function (scope, element){
             var today = new Date();
 
-            scope.date = today.toLocaleDateString();
+            scope.date = today;
 
             element.datepicker({
                 format : 'dd/m/yyyy',
                 todayHighlight : true
             }).on('changeDate', function(ev){
                 scope.$apply(function(){
-                    scope.date = ev.date.toLocaleDateString();
+                    scope.date = ev.date;
                 });
             });
         }
