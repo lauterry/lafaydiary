@@ -62,9 +62,18 @@ lafayApp.factory('LafayService', function () {
     ];
 
     return {
+        /**
+         * fetch all levels
+         * @returns {Array}
+         */
         fetchAllLevels : function() {
            return  levels;
         },
+        /**
+         * fetch exercices given a level number
+         * @param levelNumber
+         * @returns {Mixed}
+         */
         fetchLevelContent: function (levelNumber) {
             return _.find(levels, function (level) {
                 return level.number === levelNumber;

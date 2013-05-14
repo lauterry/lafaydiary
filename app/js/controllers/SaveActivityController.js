@@ -11,17 +11,16 @@ lafayApp.controller('SaveActivityController', function SaveActivityController($s
      * @param levelNumber  number of the level selected
      */
     $scope.loadLevel = function(levelNumber){
-        var level = _.find($scope.levels, function(level) {
-            return level.number === levelNumber;
-        });
+        var level = LafayService.fetchLevelContent(levelNumber);
         $scope.level = level;
         $scope.levelLabel = level.label;
     };
 
     $scope.saveActivity = function(){
         var activityToSave = {};
+        var exercices = angular.copy($scope.level.exercices);
 
-        _.forEach($scope.level.exercices, function(exercice){
+        _.forEach(exercices, function(exercice){
             var series = [];
             _.forEach(exercice.series, function(serie){
                 series.push(serie.rep);
@@ -29,13 +28,13 @@ lafayApp.controller('SaveActivityController', function SaveActivityController($s
             exercice.series = series;
         });
 
-        activityToSave.exercices = $scope.level.exercices;
+        activityToSave.exercices = exercices;
         activityToSave.date = $scope.date;
         activityToSave.level = $scope.level.number;
 
         Activity.create(activityToSave).
             success(function(data, status, headers, config) {
-                alert('Success : ' + data);
+                $scope.loadLevel($scope.level.number);
             }).
             error(function(data, status, headers, config){
                 alert('Error : ' + status);
