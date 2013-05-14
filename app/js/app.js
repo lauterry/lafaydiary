@@ -15,12 +15,6 @@ var lafayApp = angular.module('lafayApp', [], function ($routeProvider) {
         controller: 'SaveActivityController'
     });
 
-    $routeProvider.when('/reports', {
-        templateUrl: 'partials/Report.html',
-        controller: 'ReportController'
-    });
-
-
     $routeProvider.when('/404', {
         templateUrl: 'partials/404.html'
     });

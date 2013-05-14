@@ -20,14 +20,15 @@ lafayApp.controller('SaveActivityController', function SaveActivityController($s
 
     $scope.saveActivity = function(){
         var activityToSave = {};
-        var series = [];
+
         _.forEach($scope.level.exercices, function(exercice){
-            series = [];
+            var series = [];
             _.forEach(exercice.series, function(serie){
                 series.push(serie.rep);
             });
             exercice.series = series;
         });
+
         activityToSave.exercices = $scope.level.exercices;
         activityToSave.date = $scope.date;
         activityToSave.level = $scope.level.number;

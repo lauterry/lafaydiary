@@ -66,7 +66,6 @@ lafayApp.factory('LafayService', function () {
            return  levels;
         },
         fetchLevelContent: function (levelNumber) {
-
             return _.find(levels, function (level) {
                 return level.number === levelNumber;
             });

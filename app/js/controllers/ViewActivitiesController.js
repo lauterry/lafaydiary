@@ -29,13 +29,13 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
 
         Activity.remove(activityId).
             success(function(data, status, headers, config) {
-                $http.get('/lafaydiary/api/activities').
-                    success(function(data, status, headers, config) {
-                        $scope.activities = data.activities;
-                    }).
-                    error(function(data, status, headers, config){
-                        alert('Error : ' + status);
-                    });
+
+                var activity = _.find($scope.activities, function(activity) {
+                    return activity._id === activityId;
+                });
+
+                $scope.activities = _.without($scope.activities, activity);
+
             }).
             error(function(data, status, headers, config){
                 alert('Error : ' + status);
