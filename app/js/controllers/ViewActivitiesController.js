@@ -5,11 +5,11 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
         success(function(data, status, headers, config) {
             $scope.activities = data.activities;
 
-            var tempSerie = {};
             _.forEach($scope.activities, function(activity){
                 _.forEach(activity.exercices, function(exercice){
                     var series = [];
                     _.forEach(exercice.series, function(serie){
+                        var tempSerie = {};
                         tempSerie.rep = serie;
                         series.push(tempSerie);
                     });
