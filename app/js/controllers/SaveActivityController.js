@@ -33,10 +33,10 @@ lafayApp.controller('SaveActivityController', function SaveActivityController($s
         activityToSave.level = $scope.level.number;
 
         Activity.create(activityToSave).
-            success(function(data, status, headers, config) {
+            success(function() {
                 $scope.loadLevel($scope.level.number);
             }).
-            error(function(data, status, headers, config){
+            error(function(data, status){
                 alert('Error : ' + status);
             });
     };

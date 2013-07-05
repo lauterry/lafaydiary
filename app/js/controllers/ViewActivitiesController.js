@@ -2,7 +2,7 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
     'use strict';
 
     Activity.fetch().
-        success(function(data, status, headers, config) {
+        success(function(data) {
             $scope.activities = data.activities;
 
             _.forEach($scope.activities, function(activity){
@@ -16,10 +16,8 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
                     exercice.series = series;
                 });
             });
-
-
         }).
-        error(function(data, status, headers, config){
+        error(function(data, status){
             alert('Error : ' + status);
         });
 
@@ -28,7 +26,7 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
         var activityId = activity._id;
 
         Activity.remove(activityId).
-            success(function(data, status, headers, config) {
+            success(function() {
 
                 var activity = _.find($scope.activities, function(activity) {
                     return activity._id === activityId;
@@ -37,7 +35,7 @@ lafayApp.controller('ViewActivitiesController', function ViewActivitiesControlle
                 $scope.activities = _.without($scope.activities, activity);
 
             }).
-            error(function(data, status, headers, config){
+            error(function(data, status){
                 alert('Error : ' + status);
             });
 
