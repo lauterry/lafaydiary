@@ -20,6 +20,10 @@ lafayApp.controller('SaveActivityController', function SaveActivityController($s
         var activityToSave = {};
         var exercices = angular.copy($scope.level.exercices);
 
+        /**
+         * Convert series : [{rep : 1}, {rep : 1}, {rep : 1}, {rep : 1}, {rep : 1}, {rep : 1} ]
+         * to series : [1,1,1,1,1,1]
+         */
         _.forEach(exercices, function(exercice){
             var series = [];
             _.forEach(exercice.series, function(serie){

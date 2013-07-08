@@ -35,6 +35,7 @@
         <tr ng-repeat="exercice in level.exercices" ng-controller="ExerciceController">
             <td>{{exercice.name}}</td>
             <td ng-repeat="series in exercice.series">
+                {{ series | json }}
                 <input type="number" min="0" ng-model="series.rep" on-blur="updateTotal(exercice.name)">
             </td>
             <td>{{exercice.total}}</td>
