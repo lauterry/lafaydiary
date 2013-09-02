@@ -1,6 +1,6 @@
 "use strict";
 
-var lafayApp = angular.module('lafayApp', [], function ($routeProvider) {
+var lafayApp = angular.module('lafayApp', ['ui.bootstrap', 'ngLocale'], function ($routeProvider) {
     $routeProvider.when('/welcome', {
         templateUrl: 'partials/Welcome.html'
     });

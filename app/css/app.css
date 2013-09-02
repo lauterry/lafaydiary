@@ -37,7 +37,6 @@ caption {
     margin-bottom: 5px;
 }
 
-small > .datepicker {
-    display : inline-table;
-    margin-top: 2px;
+.datepicker > h1 {
+    display :inline-block;
 }

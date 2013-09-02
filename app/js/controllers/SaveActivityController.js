@@ -1,6 +1,8 @@
 lafayApp.controller('SaveActivityController', function SaveActivityController($scope, Activity, LafayService) {
     'use strict';
 
+    $scope.date = new Date();
+
     $scope.levels = LafayService.fetchAllLevels();
 
     // If no level is selected, display a default label

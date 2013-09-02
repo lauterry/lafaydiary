@@ -1,12 +1,6 @@
-<header class="page-header" ng-init="loadLevel(1.1)">
-    <h1>Votre activité pour le
-       <small>
-           <div class="input-prepend datepicker">
-               <span class="add-on"><i class="icon-calendar"></i></span>
-               <date-picker class="span2"></date-picker>
-           </div>
-       </small>
-    </h1>
+<header class="page-header datepicker" ng-init="loadLevel(1.1)">
+    <h1>Votre activité pour le</h1>
+     <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="date" ng-required="true" required="required">
 </header>
 
 <section>
@@ -35,7 +29,6 @@
         <tr ng-repeat="exercice in level.exercices" ng-controller="ExerciceController">
             <td>{{exercice.name}}</td>
             <td ng-repeat="series in exercice.series">
-                {{ series | json }}
                 <input type="number" min="0" ng-model="series.rep" on-blur="updateTotal(exercice.name)">
             </td>
             <td>{{exercice.total}}</td>
